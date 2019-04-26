@@ -50,7 +50,7 @@ public class Keys {
         }
     }
 
-    public static void main(String[] args) throws Exception {
+    public static void main2(String[] args) throws Exception {
 //        Map<String, Object> keyMap;
 //
 //            keyMap = initKey();
@@ -90,12 +90,24 @@ public class Keys {
         return encryptBASE64(key.getEncoded());
     }
 
+
+
     public static byte[] decryptBASE64(String key) throws Exception {
         return (new BASE64Decoder()).decodeBuffer(key);
     }
 
     public static String encryptBASE64(byte[] key) throws Exception {
         return (new BASE64Encoder()).encodeBuffer(key);
+    }
+
+    public static void main(String[] args) {
+        String s ="eyJWb2QiOnsiVGl0bGUiOiIxMjZf5rWL6K+VdGVzdDEubXA0IiwiRGVzY3JpcHRpb24iOiJ0aGlzIGlzIGRlc2MuIiwiQ2F0YUlkIjoiMCIsIlRhZ3MiOiIiLCJVc2VyRGF0YSI6InVzZXIgZGF0YSJ9fQ==";
+        try {
+            System.out.println(new String(decryptBASE64(s)));
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+
     }
 
     public static Map<String, Object> initKey() throws Exception {
