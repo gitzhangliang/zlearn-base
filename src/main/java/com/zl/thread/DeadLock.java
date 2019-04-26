@@ -9,8 +9,17 @@ public class DeadLock {
     public static Object lock2 = new Object();
 
     public static void main(String[] args) {
-        new Thread(DeadLock::m1).start();
-        new Thread(DeadLock::m2).start();
+//        new Thread(DeadLock::m1).start();
+//        new Thread(DeadLock::m2).start();
+        Thread a = new Thread(){
+
+                @Override
+                public void run(){
+                    System.out.println("11");
+
+                }
+        };
+        a.start();
 
     }
     public static void m1()  {
