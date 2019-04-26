@@ -28,5 +28,16 @@ public class TreeMapTest {
         map.put(3,3);
         map.forEach((k,v)-> System.out.println(k+"--"+v));
         Map map1 = new HashMap();
+        m();
+    }
+
+    public static void m(){
+        Map<String,String> map = new HashMap<String,String>(1){
+            {
+                put("1","1");
+                remove("1");
+            }
+        };
+        System.out.println(map.size());
     }
 }

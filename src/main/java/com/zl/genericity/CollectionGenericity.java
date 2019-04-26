@@ -21,7 +21,7 @@ public class CollectionGenericity {
         List<GfeiCat> gfeiCats = new ArrayList<>();
         List<YeCat> yeCats = new ArrayList<>();
 
-        List<? extends Animal> exAnimals = gfeiCats;
+        List<? extends Animal> exAnimals =  new ArrayList();
 
         //? extends Cat 可能指向GfeiCat或Cat或YeCat
         // 当想添加cat时,若指向gfeiCats或YeCat 则不能添加

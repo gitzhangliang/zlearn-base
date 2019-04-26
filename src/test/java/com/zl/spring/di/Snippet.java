@@ -53,7 +53,7 @@ public class Snippet {
 
 	@Test
 	public void testSetterDependencyInject() {
-		BeanFactory beanFactory = new ClassPathXmlApplicationContext("setterDI.xml");
+		BeanFactory beanFactory = new ClassPathXmlApplicationContext("bean/bean.xml");
 		HelloApi bean = beanFactory.getBean("bean", HelloApi.class);
 		bean.sayHello();
 	}

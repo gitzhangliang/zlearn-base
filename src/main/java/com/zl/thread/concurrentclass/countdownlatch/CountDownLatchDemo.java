@@ -29,17 +29,14 @@ public class CountDownLatchDemo {
             }
         };
 
-        Thread thread1 = new Thread(new Runnable() {
-            @Override
-            public void run() {
-                try {
-					countDownLatch.await();
-				} catch (InterruptedException e) {
-					// TODO Auto-generated catch block
-					e.printStackTrace();
-				}
-                System.out.println(Thread.currentThread().getName() + " is done");
+        Thread thread1 = new Thread(() -> {
+            try {
+                countDownLatch.await();
+            } catch (InterruptedException e) {
+                // TODO Auto-generated catch block
+                e.printStackTrace();
             }
+            System.out.println(Thread.currentThread().getName() + " is done");
         }, "thread1");
 
 
