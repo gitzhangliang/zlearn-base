@@ -34,31 +34,34 @@ public class LogicExpressionGroup {
 
     public boolean merge(String str){
         int count = 0;
-        AbstractLogicExpression expression1 = null;
-        AbstractLogicExpression expression2 = null;
+        AbstractLogicExpression ex;
+        AbstractLogicExpression middleResult = null;
         try {
             for (Expression expression : expressions){
-               if (count == 0){
-                   expression1 = this.getInLogic().newInstance();
+                ex = this.getInLogic().newInstance();
+                if (count == 0){
+                    TerminalExpression virtual = null;
                    if(this.getInLogic().equals(Logic.AND)){
-                       expression1.setExpression1(new TerminalExpression("", TerminalExpression.Compare.CONTAINS));
+                       //A && B && C && （虚拟的必为真，不然会造成错误）
+                       virtual = new TerminalExpression("", TerminalExpression.Compare.CONTAINS);
                    }else if(this.getInLogic().equals(Logic.OR)){
-                       expression1.setExpression1(new TerminalExpression("", TerminalExpression.Compare.EQUALS));
+                       //A || B || C && （虚拟的必为假，如果虚拟为真，则最会结果依赖真正的表达式，造成错误）
+                       virtual = new TerminalExpression("", TerminalExpression.Compare.EQUALS);
                    }
-                   expression1.setExpression2(expression);
+                   ex.setExpression1(virtual);
+                   ex.setExpression2(expression);
                    count++;
                }else {
-                   expression2 = this.getInLogic().newInstance();
-                   expression2.setExpression1(expression1);
-                   expression2.setExpression2(expression);
-                   expression1 = expression2;
+                   ex.setExpression1(middleResult);
+                   ex.setExpression2(expression);
                }
+                middleResult = ex;
             }
         } catch (Exception e) {
             e.printStackTrace();
         }
-        if(expression2 != null){
-            return expression2.interpret(str);
+        if(middleResult != null){
+            return middleResult.interpret(str);
         }
         return false;
     }

@@ -26,7 +26,7 @@ public abstract class Expression {
 
      public static void main(String[] args) {
          Expression terminal1 = new TerminalExpression1("A");
-         terminal1.interpret("b c");
+         System.out.println(terminal1.interpret("b c"));
      }
 }
  class AndExpression extends Expression {

@@ -38,14 +38,15 @@ public class LogicExpressionTest {
         group3.getExpressions().add(terminal6);
         groups.add(group3);
         String str = "AC";
+        //有问题 若全是|| 且全是false ,则最终结果有问题。这里只是简单演示
         boolean f = true;
         for (LogicExpressionGroup group : groups){
+            boolean flag = group.merge(str);
+            System.out.println(flag);
             if(group.getOutLogic().equals(LogicExpressionGroup.Logic.AND)){
-                f = f && group.merge(str);
-                System.out.println(group.merge(str));
+                f = f && flag;
             }else if(group.getOutLogic().equals(LogicExpressionGroup.Logic.OR)){
-                f = f || group.merge(str);
-                System.out.println(group.merge(str));
+                f = f || flag;
             }
         }
         System.out.println("匹配结果"+f);
