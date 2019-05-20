@@ -59,7 +59,7 @@ class MyThread extends Thread{
             e.printStackTrace();
             Thread.currentThread().interrupt();
         }
-        System.out.println(com.zl.designmodel.single.SingleModel.getInstance());
+        System.out.println(com.zl.design_model.single.SingleModel.getInstance());
         latch2.countDown();
     }
 }

@@ -1,5 +1,8 @@
 package com.zl.thread;
 
+import lombok.Getter;
+import lombok.Setter;
+
 /**
  * @author tzxx
  * @date 2019/4/22.
@@ -23,6 +26,8 @@ public class VolatileTest implements Runnable{
     public  void stop(){
         //a.setFlag(false);
         b = false;
+        System.out.println("-----------");
+
     }
 
     @Override
@@ -42,14 +47,7 @@ public class VolatileTest implements Runnable{
     }
 }
 
+@Getter@Setter
 class A{
     private boolean flag = true;
-
-    public boolean isFlag() {
-        return flag;
-    }
-
-    public void setFlag(boolean flag) {
-        this.flag = flag;
-    }
 }
