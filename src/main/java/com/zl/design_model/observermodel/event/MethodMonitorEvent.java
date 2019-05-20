@@ -1,4 +1,4 @@
-package com.zl.event;
+package com.zl.design_model.observermodel.event;
 
 import java.util.ArrayList;
 import java.util.EventListener;

@@ -1,4 +1,4 @@
-package com.zl.bus;
+package com.zl.design_model.observermodel.bus;
 
 import com.google.common.eventbus.EventBus;
 import com.google.common.eventbus.Subscribe;
