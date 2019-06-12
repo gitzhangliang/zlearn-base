@@ -16,5 +16,9 @@ public class Client{
         System.out.println(c);
         System.out.println(c.getBeanB());
         System.out.println(c.getBeanA());
+
+        BeanD d = ctx.getBean(BeanD.class);
+        System.out.println(d);
+        System.out.println(c.getBeanB().getBeanD());
     }
 }

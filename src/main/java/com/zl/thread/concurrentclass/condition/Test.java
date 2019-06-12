@@ -14,7 +14,7 @@ import java.util.concurrent.locks.ReentrantLock;
 public class Test {
     public static void main(String[] args) {
         //创建并发访问的账户
-        MyCount myCount = new MyCount("95599200901215522", 10000);
+        MyCount myCount = new MyCount("95599200901215522", 0);
         //创建一个线程池
         ExecutorService pool = Executors.newFixedThreadPool(2);
         Thread t1 = new SaveThread("张三1", myCount, 2000);

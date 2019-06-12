@@ -15,8 +15,14 @@ import org.springframework.context.annotation.Import;
 @Import({ConfigBeanC.class})
 public class ConfigBean {
     @Bean
-    public BeanB getBeanB(){
-        return new BeanB();
+    public BeanB getBeanB(BeanD beanD){
+        BeanB beanB = new BeanB();
+        beanB.setBeanD(beanD);
+        return beanB;
+    }
+    @Bean
+    public BeanD getBeanD(){
+        return new BeanD();
     }
 }
 

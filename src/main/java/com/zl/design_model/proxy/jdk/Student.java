@@ -14,16 +14,17 @@ public class Student implements People {
         this.name = name;
     }
     @Override
-    public void run(){
-        System.out.println(name+"跑了。。。");
+    public void run(String address){
+        System.out.println(this);
+        System.out.println(name+"跑了。。。"+address);
+        talk();
     }
 
-    public static void main(String[] args) {
-        Student s  = new Student("张三");
-        People p1 = ( People ) Proxy.newProxyInstance(Student.class.getClassLoader(),new Class[]{People.class},new StudentProxy(s));
-        People p2 = ( People ) Proxy.newProxyInstance(Student.class.getClassLoader(),s.getClass().getInterfaces(),new StudentProxy(s));
-        p1.run();
-        p2.run();
+
+    public void talk(){
+        System.out.println(this);
+        System.out.println(name+"谈论。。。");
     }
+
 }
 

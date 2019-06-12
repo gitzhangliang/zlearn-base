@@ -1,6 +1,12 @@
 package com.zl.innerclass;
-public class Outer { 
-    public static void main(String[] args) { 
+
+import lombok.extern.slf4j.Slf4j;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
+
+@Slf4j
+public class Outer {
+    public static void main(String[] args) {
         Outer outer = new Outer(); 
         Inner inner = outer.new Inner();
         inner.print("Outer.new"); 
@@ -15,12 +21,23 @@ public class Outer {
 
     public Inner getInner() { 
         return new Inner(); 
-    } 
- 
+    }
+
+    public static void stame() {
+        log.info("stame");
+    }
+    public void notStame() {
+        log.info("notStame");
+    }
+
     public class Inner {
-        public Inner(){}
-        public void print(String str) { 
-            System.out.println(str); 
+        public Inner(){
+
+        }
+        public void print(String str) {
+            log.info(str);
+            stame();
+            notStame();
         } 
         
     } 
