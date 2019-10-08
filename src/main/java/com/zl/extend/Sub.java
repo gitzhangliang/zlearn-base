@@ -15,6 +15,7 @@ public class Sub extends Super implements Interface {
 	public void over1(){
 		System.out.println("subOver1");
 	}
+
 	public static void main(String[] args) {
 		Sub s = new Sub();
 		s.over();

@@ -3,9 +3,12 @@ package com.zl.thread.concurrentclass.countdownlatch;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Set;
 import java.util.concurrent.CountDownLatch;
 
-/**CountDownLatch闭锁用于等待事件，Cyclicbarrier 用于等待线程(相当于多人约好都到达地点之后，在进行下一步动作，
+/**倒计数锁存器（Countdown Latch）是一次性的障碍，允许一个或者多个线程等待一个或者多个其他线程来做某些事情
+ *
+ * CountDownLatch闭锁用于等待事件，Cyclicbarrier 用于等待线程(相当于多人约好都到达地点之后，在进行下一步动作，
  *                                                          能否进行下一步，只需要有这些人自己决定，而闭锁则需要其它事件
  *                                                            去触发)
  * 1.CountDownLatch await() countDown() 需要通过countDown为0之后，为非阻塞
@@ -53,6 +56,10 @@ class MyThread extends Thread{
     }
     @Override
     public void run() {
+        Class<? extends Set<String>> cl = null;
+        try {
+            cl = (Class<? extends Set<String>>)Class.forName("");
+ } catch (ClassNotFoundException e) {}
         try {
             latch1.await();
         } catch (InterruptedException e) {

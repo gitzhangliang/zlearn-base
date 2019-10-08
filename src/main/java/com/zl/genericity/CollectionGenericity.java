@@ -51,6 +51,12 @@ public class CollectionGenericity {
         animals.add(null);
     }
     public  void arrayCopy(List<? extends Animal> animals,List<? super Animal> a){
+        for (Animal animal : animals) {
+            a.add(animal);
+        }
+        for (Object o : a) {
+            
+        }
 
     }
 
