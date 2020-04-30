@@ -1,5 +1,6 @@
 package com.zl.zzzz;
 
+import java.math.BigDecimal;
 import java.util.concurrent.ForkJoinPool;
 import java.util.concurrent.ForkJoinTask;
 import java.util.concurrent.RecursiveTask;
@@ -55,6 +56,5 @@ public class SumTask extends RecursiveTask<Long> {
         ForkJoinPool pool = new ForkJoinPool(4);
         ForkJoinTask<Long> task = new SumTask(0, 100, arr);
         System.out.println("result:" + pool.invoke(task));
-
     }
 }
