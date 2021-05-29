@@ -19,8 +19,8 @@ public class Test {
         ExecutorService pool = Executors.newFixedThreadPool(2);
         Thread t1 = new SaveThread("张三1", myCount, 2000);
         Thread t2 = new SaveThread("李四", myCount, 3600);
-        Thread t3 = new DrawThread("王五", myCount, 2700);
-        Thread t4 = new SaveThread("老张", myCount, 600);
+        Thread t3 = new DrawThread("王五", myCount, 7000);
+        Thread t4 = new SaveThread("老张", myCount, 6000);
         Thread t5 = new DrawThread("老牛", myCount, 1300);
         Thread t6 = new DrawThread("胖子", myCount, 800);
         //执行各个线程
@@ -28,8 +28,8 @@ public class Test {
         pool.execute(t2);
         pool.execute(t3);
         pool.execute(t4);
-        pool.execute(t5);
-        pool.execute(t6);
+//        pool.execute(t5);
+//        pool.execute(t6);
         //关闭线程池
         pool.shutdown();
     }
@@ -142,13 +142,12 @@ class MyCount {
     public void drawing(int x, String name) {
         lock.lock();                                 //获取锁
         try {
-            if (cash - x < 0) {
-                _draw.await();             //阻塞取款操作
-            } else {
-                //取款
-                cash -= x;
-                System.out.println(name + "取款" + x + "，当前余额为" + cash);
+            while (cash - x < 0){
+                _draw.await();//阻塞取款操作
             }
+            //取款
+            cash -= x;
+            System.out.println(name + "取款" + x + "，当前余额为" + cash);
             _save.signalAll();             //唤醒所有存款操作
         } catch (InterruptedException e) {
             e.printStackTrace();

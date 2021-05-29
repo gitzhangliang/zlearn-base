@@ -14,6 +14,7 @@ public class JoinTest2 extends Thread{
         System.out.println("beginTime="+System.currentTimeMillis());
         try {
             Thread.sleep(5000);
+            System.out.println("beginTime=");
         } catch (InterruptedException e) {
             e.printStackTrace();
         }

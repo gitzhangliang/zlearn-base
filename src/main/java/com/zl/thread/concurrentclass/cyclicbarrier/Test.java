@@ -19,6 +19,7 @@ public class Test {
         new SubTask("E", cb).start();
         new SubTask("F", cb).start();
         new SubTask("G", cb).start();
+        System.out.println(1111111111);
     }
 }
 

@@ -9,8 +9,8 @@ public class Outer {
     public static void main(String[] args) {
         Outer outer = new Outer(); 
         Inner inner = outer.new Inner();
-        inner.print("Outer.new"); 
- 
+        inner.print("Outer.new");
+
         inner = outer.getInner(); 
         inner.print("Outer.get");
     }
@@ -34,10 +34,12 @@ public class Outer {
         public Inner(){
 
         }
+
         public void print(String str) {
             log.info(str);
             stame();
             notStame();
+            getInner();
         } 
         
     } 

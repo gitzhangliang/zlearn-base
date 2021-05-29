@@ -2,13 +2,26 @@ package com.zl.innerclass.anonymity;
 /**
  * @author tzxx
  */
-public class Outer {
-    public static void main(String[] args) { 
+public class Outer  {
+    public void face() {
+
+    }
+
+    public static void main(String[] args) {
         Outer outer = new Outer(); 
         Inner inner = outer.getInner("Inner", "gz"); 
         System.out.println(inner.getName()); 
         System.out.println(inner.getProvince()); 
-    } 
+    }
+
+    public void s(){
+        new OuterInterface(){
+            @Override
+            public void face() {
+                Outer.this.face();
+            }
+        };
+    }
  
     public Inner getInner(final String name, final String city) { 
         return new Inner() { 
@@ -21,7 +34,8 @@ public class Outer {
                     province = "gd"; 
                 }else { 
                     province = ""; 
-                } 
+                }
+
             } 
  
             @Override

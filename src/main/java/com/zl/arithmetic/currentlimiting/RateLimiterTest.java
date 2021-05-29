@@ -27,13 +27,14 @@ public class RateLimiterTest {
 
   */
 
- private static final RateLimiter limiter = RateLimiter.create(10);
+ private static final RateLimiter limiter = RateLimiter.create(5);
 
  private void rateLimiter() {
 
    // 默认就是 1
 
    final double acquire = limiter.acquire(1);
+
 
    System.out.println("当前时间 - "+LocalDateTime.now() +" - " +Thread.currentThread().getName() +" - 阻塞 - " +acquire+ " 通过...");
 
@@ -42,15 +43,14 @@ public class RateLimiterTest {
 
  public static void main(String[] args) throws InterruptedException {
 
-   final ExecutorService service = Executors.newFixedThreadPool(5);
+   final ExecutorService service = Executors.newFixedThreadPool(90);
 
-   for (int i = 0; i < 5; i++ ) {
-
+   for (int i = 0; i < 50; i++ ) {
      service.execute(new RateLimiterTest()::rateLimiter);
 
    }
+service.shutdown();
 
-   TimeUnit.SECONDS.sleep(5);
 
 }
 

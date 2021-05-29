@@ -21,18 +21,6 @@ public class SimpleCache<K, V> extends LinkedHashMap<K, V> {
         this.limit = limit;
     }
 
-    public V save(K key, V val) {
-        return put(key, val);
-    }
-
-    public V getOne(K key) {
-        return get(key);
-    }
-
-    public boolean exists(K key) {
-        return containsKey(key);
-    }
-
     /**
      * 判断节点数是否超限
      * @param eldest
@@ -47,18 +35,18 @@ public class SimpleCache<K, V> extends LinkedHashMap<K, V> {
         SimpleCache<Integer, Integer> cache = new SimpleCache<>(3);
 
         for (int i = 0; i < 10; i++) {
-            cache.save(i, i * i);
+            cache.put(i, i * i);
         }
 
         System.out.println("插入10个键值对后，缓存内容：");
         System.out.println(cache + "\n");
 
         System.out.println("访问键值为7的节点后，缓存内容：");
-        cache.getOne(7);
+        cache.get(7);
         System.out.println(cache + "\n");
 
         System.out.println("插入键值为1的键值对后，缓存内容：");
-        cache.save(1, 1);
+        cache.put(1, 1);
         System.out.println(cache);
     }
     public static void main1(String[] args) {

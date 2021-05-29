@@ -24,16 +24,16 @@ public class ReadWriteLockTest {
                 0L, TimeUnit.MILLISECONDS,
                 new LinkedBlockingQueue<>(1024), namedThreadFactory, new ThreadPoolExecutor.AbortPolicy());
 		// 创建一些并发访问用户，一个信用卡，存的存，取的取
-		User1 u1 = new User1("张三", myCount, -4000, lock, false);
-		User1 u2 = new User1("张三他爹", myCount, 6000, lock, false);
-		User1 u3 = new User1("张三他弟", myCount, -8000, lock, false);
-		User1 u4 = new User1("张三", myCount, 800, lock, false);
-		User1 u5 = new User1("张三他爹", myCount, 0, lock, true);
+//		User1 u1 = new User1("张三", myCount, -4000, lock, true);
+//		User1 u2 = new User1("李四", myCount, 6000, lock, false);
+//		User1 u3 = new User1("王五", myCount, -8000, lock, false);
+//		User1 u4 = new User1("赵六", myCount, 800, lock, false);
+		User1 u5 = new User1("阮小七", myCount, 0, lock, true);
 		// 在线程池中执行各个用户的操作
-		pool.execute(u1);
-		pool.execute(u2);
-		pool.execute(u3);
-		pool.execute(u4);
+//		pool.execute(u1);
+//		pool.execute(u2);
+//		pool.execute(u3);
+//		pool.execute(u4);
 		pool.execute(u5);
 		// 关闭线程池
 		pool.shutdown();
@@ -77,6 +77,7 @@ class User1 implements Runnable {
 		if (isCheck) {
 			// 获取读锁
 			myLock.readLock().lock();
+
 			System.out.println(Thread.currentThread().getName()+"读：" + name + "正在查询" + myCount + "账户，当前金额为" + myCount.getCash());
 			// 释放读锁
 			myLock.readLock().unlock();

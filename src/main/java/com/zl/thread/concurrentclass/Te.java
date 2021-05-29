@@ -2,7 +2,7 @@ package com.zl.thread.concurrentclass;
 
 import sun.applet.Main;
 
-import java.util.concurrent.CountDownLatch;
+import java.util.concurrent.*;
 
 /**
  * @author zhangliang
@@ -10,9 +10,12 @@ import java.util.concurrent.CountDownLatch;
  */
 public class Te {
     public static void main(String[] args) throws InterruptedException {
-        CountDownLatch countDownLatch = new CountDownLatch(1);
-        countDownLatch.countDown();
-        countDownLatch.await();
-        System.out.println(222222222);
+        ScheduledExecutorService scheduledService = Executors.newScheduledThreadPool(1);
+        scheduledService.scheduleAtFixedRate(new Runnable() {
+            @Override
+            public void run() {
+                System.out.println(System.currentTimeMillis());
+            }
+        }, 0, 300, TimeUnit.MILLISECONDS);
     }
 }

@@ -1,6 +1,5 @@
-package com.zl.zzzz;
+package com.zl.thread.threadpool;
 
-import java.math.BigDecimal;
 import java.util.concurrent.ForkJoinPool;
 import java.util.concurrent.ForkJoinTask;
 import java.util.concurrent.RecursiveTask;
@@ -27,7 +26,9 @@ public class SumTask extends RecursiveTask<Long> {
         if(end - start > threshold) {
             int mid = (start + end) / 2;
             SumTask subTask1 = new SumTask(start, mid, arr);
+            subTask1.fork();
             SumTask subTask2 = new SumTask(mid, end, arr);
+            subTask2.fork();
             //fork
             invokeAll(subTask1, subTask2);
             long subResult1 = subTask1.join();
@@ -58,3 +59,5 @@ public class SumTask extends RecursiveTask<Long> {
         System.out.println("result:" + pool.invoke(task));
     }
 }
+
+

@@ -1,7 +1,7 @@
 package com.zl.thread.threadmethod.join;
 
 /**join作用是时所属的线程x对象正常执行run(),而时当前线程z进行无限期的阻塞，
- * 等待线程x销毁后再继续执行线程z后面的到吗
+ * 等待线程x销毁后再继续执行线程z后面的代码
  * join具有使线程排队运行的作用
  * @author tzxx
  */

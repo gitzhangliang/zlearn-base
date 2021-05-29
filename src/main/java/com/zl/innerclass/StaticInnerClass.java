@@ -16,12 +16,17 @@ public class StaticInnerClass {
         private String name;
         private static String number;
         public static void  staMe(){
+            System.out.println("staMe");
+        }
+        public  void  me(){
+            System.out.println("me");
 
         }
     }
 
     public static void main(String[] args) {
         StaticInnerClass staticInnerClass = new StaticInnerClass();
+        StaticInner staticInner1  = new StaticInnerClass.StaticInner();
         StaticInner staticInner = new StaticInner();
         staticInner.setName("11");
         System.out.println(staticInner.name);
